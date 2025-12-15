@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI ニュース分類システム</title>
+    <meta name="description" content="LLMを活用した高度なニュース記事分類アプリケーション">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="icon">🤖</span>
+                    AI ニュース分類システム
+                </h1>
+                <p class="app-subtitle">RSSフィード × LLM自動タグ付け</p>
+            </div>
+        </header>
+
+        <!-- コントロールパネル -->
+        <section class="control-panel">
+            <div class="filter-section">
+                <label for="categoryFilter" class="filter-label">
+                    <span class="label-icon">📰</span>
+                    カテゴリー選択
+                </label>
+                <select id="categoryFilter" class="category-select">
+                    <option value="">カテゴリーを選択してください</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- ニュース一覧 -->
+        <section class="news-section">
+            <div class="section-header">
+                <h2 class="section-title">ニュース一覧</h2>
+                <div id="newsCount" class="news-count">0 件</div>
+            </div>
+
+            <div id="newsList" class="news-list">
+                <div class="empty-state">
+                    <span class="empty-icon">📰</span>
+                    <p>カテゴリーを選択してニュースを表示</p>
+                </div>
+            </div>
+
+            <!-- ローディング表示 -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>ニュースを取得中...</p>
+            </div>
+
+            <!-- エラー表示 -->
+            <div id="error" class="error-message hidden"></div>
+        </section>
+    </div>
+
+    <!-- 通知トースト -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

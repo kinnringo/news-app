@@ -1,0 +1,635 @@
+/* ============================================
+   リセット & ベーススタイル
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* カラーパレット - HSLベースの洗練された配色 */
+    --primary-hue: 250;
+    --primary-sat: 85%;
+    --primary-light: 60%;
+
+    --bg-gradient-1: hsl(250, 100%, 15%);
+    --bg-gradient-2: hsl(280, 100%, 25%);
+    --bg-gradient-3: hsl(220, 90%, 20%);
+
+    --card-bg: hsla(0, 0%, 100%, 0.05);
+    --card-border: hsla(0, 0%, 100%, 0.1);
+    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+    --text-primary: hsl(0, 0%, 98%);
+    --text-secondary: hsl(0, 0%, 75%);
+    --text-muted: hsl(0, 0%, 55%);
+
+    --accent-blue: hsl(210, 100%, 60%);
+    --accent-purple: hsl(280, 100%, 65%);
+    --accent-green: hsl(145, 70%, 55%);
+    --accent-orange: hsl(30, 100%, 60%);
+    --accent-red: hsl(0, 85%, 60%);
+
+    /* スペーシング */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* ボーダー半径 */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+
+    /* トランジション */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 50%, var(--bg-gradient-3) 100%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   コンテナ
+   ============================================ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) var(--spacing-md);
+}
+
+/* ============================================
+   ヘッダー
+   ============================================ */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    animation: fadeInDown 0.6s ease-out;
+}
+
+.header-content {
+    backdrop-filter: blur(10px);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    box-shadow: var(--card-shadow);
+}
+
+.app-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.icon {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.app-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* ============================================
+   コントロールパネル
+   ============================================ */
+.control-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+    animation: fadeIn 0.6s ease-out 0.2s both;
+}
+
+.filter-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.filter-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.9rem;
+}
+
+.label-icon {
+    font-size: 1.2rem;
+}
+
+.category-select {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    backdrop-filter: blur(10px);
+}
+
+.category-select:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px hsla(210, 100%, 60%, 0.1);
+}
+
+.category-select:focus {
+    outline: none;
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 3px hsla(280, 100%, 65%, 0.2);
+}
+
+.category-select option {
+    background: hsl(250, 100%, 15%);
+    color: var(--text-primary);
+}
+
+/* ============================================
+   ボタン
+   ============================================ */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    color: white;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.6);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--accent-green), hsl(145, 70%, 45%));
+    color: white;
+    box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(72, 187, 120, 0.6);
+}
+
+.btn-secondary {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-secondary);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: hsla(0, 0%, 100%, 0.1);
+    color: var(--text-primary);
+}
+
+.btn-classify {
+    background: linear-gradient(135deg, var(--accent-orange), hsl(30, 100%, 50%));
+    color: white;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(251, 146, 60, 0.4);
+}
+
+.btn-classify:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(251, 146, 60, 0.6);
+}
+
+.btn-classify:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ============================================
+   フォーム
+   ============================================ */
+.add-news-form {
+    backdrop-filter: blur(10px);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--card-shadow);
+    animation: slideDown 0.3s ease-out;
+}
+
+.add-news-form.hidden {
+    display: none;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: hsla(0, 0%, 100%, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all var(--transition-normal);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 3px hsla(280, 100%, 65%, 0.2);
+    background: hsla(0, 0%, 100%, 0.08);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: flex-end;
+}
+
+/* ============================================
+   ニュースセクション
+   ============================================ */
+.news-section {
+    animation: fadeIn 0.6s ease-out 0.3s both;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.news-count {
+    background: var(--card-bg);
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    color: var(--accent-blue);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+}
+
+.news-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-md);
+}
+
+/* ============================================
+   ニュースカード
+   ============================================ */
+.news-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    backdrop-filter: blur(10px);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-normal);
+    animation: cardFadeIn 0.4s ease-out both;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.news-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+    transform: scaleX(0);
+    transition: transform var(--transition-normal);
+}
+
+.news-card:hover::before {
+    transform: scaleX(1);
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+    border-color: hsla(0, 0%, 100%, 0.2);
+}
+
+.news-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-sm);
+    gap: var(--spacing-sm);
+}
+
+.news-id {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.category-badge {
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+}
+
+.tag-badge {
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+    color: white;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.external-link-icon {
+    font-size: 1.2rem;
+    opacity: 0.6;
+    transition: opacity var(--transition-fast);
+}
+
+text-align: center;
+padding: var(--spacing-xl);
+}
+
+.loading.hidden,
+.error-message.hidden,
+.toast.hidden {
+    display: none;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto var(--spacing-sm);
+    border: 4px solid var(--card-border);
+    border-top-color: var(--accent-purple);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.error-message {
+    background: hsla(0, 85%, 60%, 0.1);
+    border: 1px solid var(--accent-red);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    color: var(--accent-red);
+    text-align: center;
+}
+
+/* ============================================
+   トースト通知
+   ============================================ */
+.toast {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    color: var(--text-primary);
+    font-weight: 500;
+    animation: toastSlideIn 0.3s ease-out;
+    z-index: 1000;
+    max-width: 400px;
+}
+
+.toast.success {
+    border-left: 4px solid var(--accent-green);
+}
+
+.toast.error {
+    border-left: 4px solid var(--accent-red);
+}
+
+/* ============================================
+   アニメーション
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ============================================
+   レスポンシブデザイン
+   ============================================ */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .app-title {
+        font-size: 2rem;
+        flex-direction: column;
+    }
+
+    .control-panel {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .news-list {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .toast {
+        right: var(--spacing-sm);
+        left: var(--spacing-sm);
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-title {
+        font-size: 1.5rem;
+    }
+
+    .icon {
+        font-size: 2rem;
+    }
+
+    .news-card {
+        padding: var(--spacing-sm);
+    }
+}
